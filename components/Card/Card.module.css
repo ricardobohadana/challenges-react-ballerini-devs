@@ -1,0 +1,81 @@
+.card {
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #393939;
+  margin: auto;
+}
+
+.avatar {
+  border-radius: 88px;
+  border: 2px solid #27ae60;
+  height: 175px;
+  width: 175px;
+  margin: auto;
+}
+
+.name {
+  color: #f9f9f9;
+  font-size: 1.6rem;
+  margin: auto;
+}
+
+.description {
+  color: #f9f9f9;
+  font-size: 1.2rem;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.actionContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.fullCard {
+  background-color: #27ae60;
+}
+
+.greenBar {
+  margin: auto;
+  padding-bottom: 1rem;
+  color: #27ae60;
+  font-size: 2rem;
+}
+
+.icons {
+  margin: auto;
+  padding: 0 0.5rem;
+}
+
+.editBtn {
+  background-color: #dbb801;
+  border-radius: 55px;
+  border: 1px solid black;
+  width: 125px;
+  height: 40px;
+  cursor: pointer;
+  margin: auto;
+  font-size: 1.15rem;
+}
+
+.deleteBtn {
+  margin: auto;
+  cursor: pointer;
+  width: 125px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 55px;
+  background-color: #f42626;
+  font-size: 1.15rem;
+}
+
+.actionBtnContainer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}

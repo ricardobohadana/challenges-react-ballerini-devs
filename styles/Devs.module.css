@@ -2,12 +2,16 @@
   background-color: #1d1d1d;
   min-height: 100vh;
   padding: 2rem 8rem;
-  overflow: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .mainContent {
   display: flex;
-  /* flex-wrap: wrap; */
+  min-height: 100%;
+  margin: auto 0;
+  /* flex-wrap: no-wrap; */
   /* flex-direction: column; */
-  justify-content: space-between;
-  /* margin-top: 150px; */
+  justify-content: space-evenly;
 }

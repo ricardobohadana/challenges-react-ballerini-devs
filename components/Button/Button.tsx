@@ -11,7 +11,7 @@ type Props = {
 const Button = (props: Props) => {
   const fontSize =
     props.fontSize == "sm"
-      ? "1.25rem"
+      ? "1.2rem"
       : props.fontSize == "md"
       ? "1.625rem"
       : "2rem";
