@@ -1,28 +1,71 @@
 .container {
   background-color: #1d1d1d;
   min-height: 100vh;
-  padding: 1.6rem 7.5rem;
+  padding: 2rem 8rem;
+  overflow: hidden;
 }
 
 .mainContent {
   display: flex;
+  /* flex-wrap: wrap; */
   /* flex-direction: column; */
   justify-content: space-between;
+  /* margin-top: 150px; */
 }
 
 .landing {
   margin: auto 0;
   max-width: 50%;
+  z-index: 99;
 }
 
 .landing p {
   color: #a9a9a9;
   opacity: 0.7;
+  font-size: 1.5rem;
+  margin-bottom: 10vh;
 }
 
 .landing h2 {
   color: #f9f9f9;
-  font-size: 48px;
+  font-size: 3rem;
   padding: 0;
   margin: 0;
+}
+
+.blobs_side {
+  transition: all ease 0.3s;
+  position: absolute;
+  left: 0;
+  top: 10vh;
+}
+.blobs_bottom {
+  transition: all ease 0.3s;
+  position: absolute;
+  left: -5vh;
+  bottom: -40vh;
+  z-index: 0;
+}
+
+@media screen and (max-width: 1400px) {
+  .blobs_side {
+    scale: 0.8;
+    left: -15vh;
+  }
+  .blobs_bottom {
+    scale: 0.8;
+    left: -15vh;
+    bottom: -50vh;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .blobs_side {
+    scale: 0.7;
+  }
+  .blobs_bottom {
+    scale: 0.7;
+    left: -20vh;
+    bottom: -55vh;
+  }
 }

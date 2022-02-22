@@ -1,0 +1,13 @@
+.container {
+  background-color: #1d1d1d;
+  min-height: 100vh;
+  padding: 2rem 8rem;
+  overflow: hidden;
+}
+.mainContent {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-direction: column; */
+  justify-content: space-between;
+  /* margin-top: 150px; */
+}

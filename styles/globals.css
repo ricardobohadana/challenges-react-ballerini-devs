@@ -4,6 +4,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: hidden;
+  /* transition: all ease-in-out 1.3s; */
 }
 
 a {
@@ -14,4 +16,16 @@ a {
 * {
   box-sizing: border-box;
   /* color: #f9f9f9; */
+}
+
+@media screen and (max-width: 1400px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 8px;
+  }
 }
