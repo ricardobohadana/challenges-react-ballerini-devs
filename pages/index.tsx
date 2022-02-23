@@ -21,7 +21,7 @@ const Home: NextPage = () => {
               importante. Faça parte da maior comunidade de desenvolvedores
               brasileiros
             </p>
-            <Button displayText="Entre agora" showAfter></Button>
+            <Button displaytext="Entre agora" showafter={true}></Button>
           </div>
           <Image src={programadorImg}></Image>
         </div>

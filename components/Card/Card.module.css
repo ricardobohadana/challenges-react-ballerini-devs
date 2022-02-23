@@ -5,6 +5,7 @@
   flex-direction: column;
   background-color: #393939;
   margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .avatar {
@@ -52,15 +53,29 @@
   padding: 0 0.5rem;
 }
 
-.editBtn {
-  background-color: #dbb801;
+.cancelBtn {
+  background-color: #f9f9f9;
   border-radius: 55px;
-  border: 1px solid black;
+  border: 0px solid black;
   width: 125px;
   height: 40px;
   cursor: pointer;
   margin: auto;
   font-size: 1.15rem;
+  box-shadow: 0px 2px 5px 1px #000;
+  transition-duration: 0.4s;
+}
+.editBtn {
+  background-color: #dbb801;
+  border-radius: 55px;
+  border: 0px solid black;
+  width: 125px;
+  height: 40px;
+  cursor: pointer;
+  margin: auto;
+  font-size: 1.15rem;
+  box-shadow: 0px 2px 5px 1px #000;
+  transition-duration: 0.4s;
 }
 
 .deleteBtn {
@@ -68,14 +83,41 @@
   cursor: pointer;
   width: 125px;
   height: 40px;
-  border: 1px solid black;
+  border: 0px solid black;
   border-radius: 55px;
   background-color: #f42626;
   font-size: 1.15rem;
+  box-shadow: 0px 2px 10px 1px #000;
+  transition-duration: 0.4s;
+  /* display: inline-block; */
 }
 
+.deleteBtn:hover {
+  box-shadow: 0px 2px 10px 1px #f42626;
+}
+
+.editBtn:hover {
+  box-shadow: 0px 2px 10px 1px #dbb801;
+}
+
+.cancelBtn:hover {
+  box-shadow: 0px 2px 10px 1px #f9f9f9;
+}
 .actionBtnContainer {
-  margin-top: 2rem;
+  margin: 1rem 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+}
+
+.modalContent {
+  margin: auto;
+  padding: 0.5rem;
+  max-width: 20rem;
 }
