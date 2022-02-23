@@ -38,8 +38,8 @@
 `; */
 
 .modalContent {
-  padding: 10px;
-  max-height: 30rem;
+  padding: 1.2rem;
+  /* max-height: 30rem; */
   overflow-x: hidden;
   overflow-y: auto;
   color: #f9f9f9;

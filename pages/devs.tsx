@@ -51,7 +51,7 @@ const devs = (props: Props) => {
           </div>
         ) : (
           devData.map((dev: Devs, index: number) => {
-            return <Card key={index} {...devs} />;
+            return <Card key={index} {...dev} />;
           })
         )}
       </div>
