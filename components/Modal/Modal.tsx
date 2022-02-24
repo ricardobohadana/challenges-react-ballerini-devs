@@ -4,7 +4,7 @@ import styles from "./Modal.module.css";
 
 export interface ModalProps {
   isShown: boolean;
-  hide: () => void;
+  hide: (e: React.SyntheticEvent) => void;
 }
 
 export const Modal: React.FC<ModalProps> = ({ children, isShown, hide }) => {
