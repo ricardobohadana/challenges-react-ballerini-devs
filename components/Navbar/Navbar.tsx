@@ -27,7 +27,7 @@ const Navbar = (props: Props) => {
   };
 
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <nav className={styles.nav_container}>
         <div className={styles.left}>
           <div className={styles.icon_div}>
@@ -83,7 +83,7 @@ const Navbar = (props: Props) => {
       ) : (
         <div></div>
       )}
-    </>
+    </div>
   );
 };
 
