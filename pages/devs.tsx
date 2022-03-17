@@ -17,7 +17,7 @@ import { appURL } from "./_app";
 
 type Props = {};
 
-export interface Devs {
+export interface IDevs {
   id: string;
   Avatar?: string;
   Nome: string;
@@ -26,11 +26,11 @@ export interface Devs {
   Linkedin: string;
 }
 
-const devs = (props: Props) => {
+const Devs: React.FC = (props: Props) => {
   const requestURL = appURL + "/api/v1/dev";
   const carousel = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [devData, setDevData] = useState<Devs[]>([]);
+  const [devData, setDevData] = useState<IDevs[]>([]);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAddDevModalOpen, setIsAddDevModalOpen] = useState(false);
@@ -42,7 +42,7 @@ const devs = (props: Props) => {
     Github: "",
     Linkedin: "",
   });
-  const [modalData, setModalData] = useState<Devs>({
+  const [modalData, setModalData] = useState<IDevs>({
     id: "",
     Avatar: "",
     Nome: "",
@@ -98,7 +98,7 @@ const devs = (props: Props) => {
             .get(requestURL)
             .then((resp) => resp.data)
             .then((data) => data.devs)
-            .then((devs: Devs[]) => {
+            .then((devs: IDevs[]) => {
               setDevData(devs);
             })
             .then(() => {
@@ -133,7 +133,7 @@ const devs = (props: Props) => {
       .get(requestURL)
       .then((response) => response.data)
       .then((data) => data.devs)
-      .then((devs: Devs[]) => {
+      .then((devs: IDevs[]) => {
         setDevData(devs);
       })
       .then(() => {
@@ -143,7 +143,7 @@ const devs = (props: Props) => {
         console.error(err);
         setIsLoading(false);
       });
-  }, []);
+  }, [requestURL]);
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     console.log("executed handle submit");
@@ -217,7 +217,7 @@ const devs = (props: Props) => {
             {isLoading ? (
               <div className={styles.loading}></div>
             ) : (
-              devData.map((dev: Devs, index: number) => {
+              devData.map((dev: IDevs, index: number) => {
                 const avatarSrc = dev.Avatar
                   ? dev.Avatar
                   : "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ea7a3c32163929.567197ac70bda.png";
@@ -226,7 +226,12 @@ const devs = (props: Props) => {
                   <div className={styles.carouselItem} key={index}>
                     <div className={styles.card}>
                       <div className={styles.avatar}>
-                        <Image width="175px" height="175px" src={avatarSrc} />
+                        <Image
+                          width="175px"
+                          height="175px"
+                          src={avatarSrc}
+                          alt={`Profile avatar of dev named ${dev.Nome}`}
+                        />
                       </div>
                       <div className={styles.greenBar}>______________</div>
                       <h5 className={styles.name}>{dev.Nome}</h5>
@@ -234,6 +239,7 @@ const devs = (props: Props) => {
                       <div className={styles.actionContent}>
                         <a
                           target="_blank"
+                          rel="noreferrer"
                           href={`https://linkedin.com/in/${dev.Linkedin}`}
                         >
                           <FontAwesomeIcon
@@ -245,6 +251,7 @@ const devs = (props: Props) => {
                         </a>
                         <a
                           target="_blank"
+                          rel="noreferrer"
                           href={`https://github.com/${dev.Github}`}
                         >
                           <FontAwesomeIcon
@@ -252,7 +259,6 @@ const devs = (props: Props) => {
                             icon={faGithub}
                             size="3x"
                             color="#f5f5f5"
-                            target="_blank"
                           />
                         </a>
                         <div>
@@ -537,4 +543,4 @@ const devs = (props: Props) => {
   );
 };
 
-export default devs;
+export default Devs;

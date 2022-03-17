@@ -29,14 +29,14 @@ const Home: NextPage = () => {
               onClick={() => router.push("/devs")}
             ></Button>
           </div>
-          <Image src={programadorImg}></Image>
+          <Image src={programadorImg} alt="Programador"></Image>
         </div>
       </div>
       <div className={styles.blobs_bottom}>
-        <Image src={blobs_bottom}></Image>
+        <Image src={blobs_bottom} alt="Estilização inferior"></Image>
       </div>
       <div className={styles.blobs_side}>
-        <Image src={blobs_side}></Image>
+        <Image src={blobs_side} alt="Estilização lateral"></Image>
       </div>
     </div>
   );

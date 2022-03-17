@@ -30,12 +30,13 @@ const Navbar: React.FC = ({ children }) => {
           </div>
         </div>
         <div className={styles.center}>
-          <Link href="/">
+          <Link href="/" passHref>
             <Image
               src={logo}
               width="50%"
               height="50%"
               className={styles.logoLink}
+              alt="Ballerini Devs logo"
             />
           </Link>
           <span className={styles.logoTitle}>Ballerini Devs</span>
