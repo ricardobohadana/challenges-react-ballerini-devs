@@ -206,10 +206,6 @@
   flex: none;
 }
 
-.mainContentContainer {
-  display: flex;
-}
-
 .loading {
   display: flex;
   align-self: center;
@@ -228,5 +224,36 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .container {
+    padding: 1rem 4rem;
+  }
+
+  .mainContentContainer {
+    margin-top: 2em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mainContentContainer {
+    margin-top: 5rem;
+  }
+  .container {
+    padding: 2rem 1rem;
+  }
+  .searchBtn {
+    font-size: 12px;
+    padding: 1rem 0.8rem;
+  }
+  .editBtn,
+  .deleteBtn {
+    font-size: 16px;
+    width: 110px;
+  }
+  .actionBtnContainer {
+    gap: 2rem;
   }
 }
