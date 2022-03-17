@@ -33,7 +33,15 @@ const devs = (props: Props) => {
   const [devData, setDevData] = useState<Devs[]>([]);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddDevModalOpen, setIsAddDevModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState<number>(-1);
+  const [addModalData, setAddModalData] = useState({
+    Avatar: "",
+    Nome: "",
+    Carreira: "",
+    Github: "",
+    Linkedin: "",
+  });
   const [modalData, setModalData] = useState<Devs>({
     id: "",
     Avatar: "",
@@ -55,7 +63,9 @@ const devs = (props: Props) => {
       carousel.current.scrollLeft -= carousel.current.offsetWidth / 1.5;
     }
   };
-
+  const toggleAddDevModal = () => {
+    setIsAddDevModalOpen(true);
+  };
   const toggleDeleteModal = (event: React.SyntheticEvent) => {
     let index_str = event.currentTarget.getAttribute("child-key");
     let index =
@@ -77,6 +87,46 @@ const devs = (props: Props) => {
     }
   };
 
+  const handleSubmitNewDev = () => {
+    setIsLoading(true);
+    axios
+      .post(requestURL, addModalData)
+      .then((response) => response.status)
+      .then((status) => {
+        if (status === 201) {
+          axios
+            .get(requestURL)
+            .then((resp) => resp.data)
+            .then((data) => data.devs)
+            .then((devs: Devs[]) => {
+              setDevData(devs);
+            })
+            .then(() => {
+              setIsLoading(false);
+            })
+            .catch((err) => {
+              console.error(err);
+              setIsLoading(false);
+            });
+        } else {
+          setIsLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
+
+    setAddModalData({
+      Avatar: "",
+      Nome: "",
+      Carreira: "",
+      Github: "",
+      Linkedin: "",
+    });
+    setIsAddDevModalOpen(!isAddDevModalOpen);
+  };
+
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -84,7 +134,6 @@ const devs = (props: Props) => {
       .then((response) => response.data)
       .then((data) => data.devs)
       .then((devs: Devs[]) => {
-        console.log(devs);
         setDevData(devs);
       })
       .then(() => {
@@ -146,7 +195,16 @@ const devs = (props: Props) => {
   return (
     <>
       <div className={styles.container}>
-        <Navbar showSearchButton={true} />
+        <Navbar>
+          <div className={styles.btnContainer}>
+            <button
+              onClick={(e) => toggleAddDevModal()}
+              className={styles.searchBtn}
+            >
+              Cadastrar Dev
+            </button>
+          </div>
+        </Navbar>
         <div className={styles.mainContentContainer}>
           <FontAwesomeIcon
             onClick={handleLeftClick}
@@ -201,7 +259,7 @@ const devs = (props: Props) => {
                           <Button
                             displaytext="Ver perfil"
                             fontSize="md"
-                            showafter={false}
+                            showAfter={false}
                           />
                         </div>
                       </div>
@@ -237,6 +295,7 @@ const devs = (props: Props) => {
         </div>
       </div>
       <div>
+        {/* EDIT MODAL */}
         <Modal isShown={isEditModalOpen} hide={toggleEditModal}>
           <div className={styles.modalTitle}>
             <div>Editar Dev</div>
@@ -344,6 +403,113 @@ const devs = (props: Props) => {
             </button>
           </div>
         </Modal>
+        {/* ADD DEV MODAL */}
+        <Modal isShown={isAddDevModalOpen} hide={toggleAddDevModal}>
+          <div className={styles.modalTitle}>
+            <div>Adicionar Dev</div>
+          </div>
+          <div className={styles.modalContent}>
+            <form
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div className={styles.formInputContainer}>
+                <div className={styles.label}>Nome:</div>
+                <input
+                  className={styles.editInputs}
+                  type="text"
+                  name="nameInput"
+                  value={addModalData.Nome}
+                  onChange={(e) =>
+                    setAddModalData({
+                      ...addModalData,
+                      Nome: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className={styles.formInputContainer}>
+                <div className={styles.label}>Avatar:</div>
+                <input
+                  className={styles.editInputs}
+                  type="text"
+                  name="avatarInput"
+                  value={addModalData.Avatar}
+                  onChange={(e) =>
+                    setAddModalData({
+                      ...addModalData,
+                      Avatar: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className={styles.formInputContainer}>
+                <div className={styles.label}>Carreira:</div>
+                <input
+                  className={styles.editInputs}
+                  type="text"
+                  name="Carreira"
+                  value={addModalData.Carreira}
+                  onChange={(e) =>
+                    setAddModalData({
+                      ...addModalData,
+                      Carreira: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className={styles.formInputContainer}>
+                <div className={styles.label}>Github:</div>
+                <input
+                  className={styles.editInputs}
+                  type="text"
+                  name="github"
+                  value={addModalData.Github}
+                  onChange={(e) =>
+                    setAddModalData({
+                      ...addModalData,
+                      Github: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className={styles.formInputContainer}>
+                <div className={styles.label}>LinkedIn:</div>
+                <input
+                  className={styles.editInputs}
+                  type="text"
+                  name="linkedIn"
+                  value={addModalData.Linkedin}
+                  onChange={(e) =>
+                    setAddModalData({
+                      ...addModalData,
+                      Linkedin: e.target.value,
+                    })
+                  }
+                />
+              </div>
+            </form>
+          </div>
+          <div className={styles.actionBtnContainer}>
+            <button
+              onClick={() => setIsAddDevModalOpen(!isAddDevModalOpen)}
+              className={styles.cancelBtn}
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              className={styles.saveBtn}
+              onClick={(e) => handleSubmitNewDev()}
+            >
+              Adicionar
+            </button>
+          </div>
+        </Modal>
+        {/* DELETE MODAL */}
         <Modal isShown={isDeleteModalOpen} hide={(e) => toggleDeleteModal(e)}>
           <div className={styles.modalTitle}>
             <div>Excluir Dev</div>

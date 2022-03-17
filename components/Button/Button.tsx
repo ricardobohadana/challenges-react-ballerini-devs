@@ -9,7 +9,7 @@ export interface ButtonProps
     >,
     React.AriaAttributes {
   displaytext?: string;
-  showafter: boolean;
+  showAfter: boolean;
   fontSize?: string;
 }
 
@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       ? "1.2rem"
       : "1.45rem";
 
-  return props.showafter ? (
+  return props.showAfter ? (
     <button {...rest} className={styles.btnaft} style={{ fontSize: fontSize }}>
       <Link key={props.key} href="/devs">
         {props.displaytext}
