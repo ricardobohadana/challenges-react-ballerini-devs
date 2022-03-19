@@ -156,6 +156,7 @@ const Devs: React.FC = (props: Props) => {
       .then((response: AxiosResponse) => {
         if (response.status === 201) {
           setDevData(new_devs);
+          setIsLoading(false);
         } else {
           setIsLoading(false);
         }
