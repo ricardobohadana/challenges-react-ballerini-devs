@@ -23,9 +23,22 @@ a {
     font-size: 10px;
   }
 }
+*/
+
+@media screen and (max-width: 1500px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+}
 
 @media screen and (max-width: 900px) {
-  html {
-    font-size: 8px;
+  html,
+  body {
+    overflow-y: auto;
+    font-size: 10px;
   }
-} */
+  .blobs_bottom {
+    display: none;
+  }
+}

@@ -42,30 +42,50 @@
 .blobs_bottom {
   transition: all ease 0.3s;
   position: absolute;
-  left: -5vh;
-  bottom: -53vh;
+  left: -5vw;
+  bottom: -36vh;
   z-index: 0;
 }
 
 @media screen and (max-width: 1400px) {
+  .container {
+    padding: 1rem 4rem;
+  }
   .blobs_side {
     scale: 0.8;
     left: -15vh;
   }
   .blobs_bottom {
     scale: 0.8;
-    left: -15vh;
-    bottom: -50vh;
+    left: -7vw;
+    bottom: -70vh;
   }
 }
 
 @media screen and (max-width: 900px) {
+  .blobs_bottom {
+    display: none;
+  }
+
+  .landing {
+    margin-top: 2rem;
+    max-width: 90%;
+  }
+  .mainContent {
+    flex-wrap: wrap;
+    overflow-y: auto;
+    justify-content: center;
+  }
+  .container {
+    padding: 0.2rem 0.8rem;
+    overflow-y: auto;
+  }
   .blobs_side {
     scale: 0.7;
   }
   .blobs_bottom {
     scale: 0.7;
-    left: -20vh;
-    bottom: -55vh;
+    left: -25vh;
+    bottom: -80vh;
   }
 }
